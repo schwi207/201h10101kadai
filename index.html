@@ -28,7 +28,7 @@
     <div id="map"></div>
     <script>
         // Leaflet.jsを使って地図を初期化
-        var map = L.map('map').setView([35.6895, 139.6917], 13); // 地図の中心を東京に設定
+        var map = L.map('map').setView([34.6936, 135.502], 13); // 地図の中心を大阪に設定
 
         // OpenStreetMapのタイルレイヤーを追加
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -36,14 +36,14 @@
         }).addTo(map);
 
         // マーカーを地図上に追加
-        var marker = L.marker([35.6895, 139.6917]).addTo(map);
-        marker.bindPopup("Hello from Tokyo!").openPopup(); // ポップアップメッセージを設定
+        var marker = L.marker([34.6936, 135.502]).addTo(map);
+        marker.bindPopup("Osaka here").openPopup(); // ポップアップメッセージを設定
 
         // ポリゴンを地図上に追加
         var polygon = L.polygon([
-            [35.6895, 139.6917],
-            [35.6995, 139.7017],
-            [35.6795, 139.6917]
+            [34.6936, 135.502],
+            [34.7036, 135.512],
+            [34.6836, 135.492]
         ]).addTo(map);
         polygon.bindPopup("ポリゴンのエリア"); // ポリゴンのポップアップメッセージ
     </script>
