@@ -63,10 +63,10 @@
         new Chart(ctxBar, {
             type: 'bar', // グラフの種類を棒グラフに指定
             data: {
-                labels: ['A', 'B', 'C'], // x軸のラベル
+                labels: ['豊中', '吹田', '茨木'], // x軸のラベル
                 datasets: [{
-                    label: 'データ例', // データセットのラベル
-                    data: [12, 19, 3], // 各バーの値
+                    label: '人口', // データセットのラベル
+                    data: [40, 38, 28], // 各バーの値
                     backgroundColor: ['red', 'blue', 'green'] // 各バーの色
                 }]
             }
@@ -77,10 +77,10 @@
         new Chart(ctxLine, {
             type: 'line', // グラフの種類を折れ線グラフに指定
             data: {
-                labels: ['1月', '2月', '3月'], // x軸のラベル
+                labels: ['2024', '2025', '2026'], // x軸のラベル
                 datasets: [{
-                    label: '月間データ', // データセットのラベル
-                    data: [5, 10, 15], // 各データ点の値
+                    label: '年間推移', // データセットのラベル
+                    data: [20, 40, 55], // 各データ点の値
                     borderColor: 'blue', // 線の色
                     fill: false // 塗りつぶしを無効化
                 }]
@@ -94,7 +94,7 @@
             data: {
                 labels: ['Red', 'Blue', 'Yellow'], // セグメントのラベル
                 datasets: [{
-                    data: [300, 50, 100], // 各セグメントの値
+                    data: [150, 150, 200], // 各セグメントの値
                     backgroundColor: ['red', 'blue', 'yellow'] // 各セグメントの色
                 }]
             }
