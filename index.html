@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オンライン自習用サンプルコード</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* 地図の高さを設定 */
+        #map {
+            height: 400px;
+            margin-bottom: 20px;
+        }
+        /* グラフを中央寄せにする */
+        canvas {
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Leaflet.jsとChart.jsのサンプルコード</h1>
+
+    <!-- 地図表示セクション -->
+    <h2>1. 地図の表示 (Leaflet.js)</h2>
+    <div id="map"></div>
+    <script>
+        // Leaflet.jsを使って地図を初期化
+        var map = L.map('map').setView([35.6895, 139.6917], 13); // 地図の中心を東京に設定
+
+        // OpenStreetMapのタイルレイヤーを追加
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // マーカーを地図上に追加
+        var marker = L.marker([35.6895, 139.6917]).addTo(map);
+        marker.bindPopup("Hello from Tokyo!").openPopup(); // ポップアップメッセージを設定
+
+        // ポリゴンを地図上に追加
+        var polygon = L.polygon([
+            [35.6895, 139.6917],
+            [35.6995, 139.7017],
+            [35.6795, 139.6917]
+        ]).addTo(map);
+        polygon.bindPopup("ポリゴンのエリア"); // ポリゴンのポップアップメッセージ
+    </script>
+
+    <!-- グラフ表示セクション -->
+    <h2>2. グラフの表示 (Chart.js)</h2>
+    <!-- 棒グラフ -->
+    <canvas id="barChart" width="400" height="200"></canvas>
+    <!-- 折れ線グラフ -->
+    <canvas id="lineChart" width="400" height="200"></canvas>
+    <!-- 円グラフ -->
+    <canvas id="pieChart" width="400" height="200"></canvas>
+
+    <script>
+        // 棒グラフの描画
+        var ctxBar = document.getElementById('barChart').getContext('2d');
+        new Chart(ctxBar, {
+            type: 'bar', // グラフの種類を棒グラフに指定
+            data: {
+                labels: ['A', 'B', 'C'], // x軸のラベル
+                datasets: [{
+                    label: 'データ例', // データセットのラベル
+                    data: [12, 19, 3], // 各バーの値
+                    backgroundColor: ['red', 'blue', 'green'] // 各バーの色
+                }]
+            }
+        });
+
+        // 折れ線グラフの描画
+        var ctxLine = document.getElementById('lineChart').getContext('2d');
+        new Chart(ctxLine, {
+            type: 'line', // グラフの種類を折れ線グラフに指定
+            data: {
+                labels: ['1月', '2月', '3月'], // x軸のラベル
+                datasets: [{
+                    label: '月間データ', // データセットのラベル
+                    data: [5, 10, 15], // 各データ点の値
+                    borderColor: 'blue', // 線の色
+                    fill: false // 塗りつぶしを無効化
+                }]
+            }
+        });
+
+        // 円グラフの描画
+        var ctxPie = document.getElementById('pieChart').getContext('2d');
+        new Chart(ctxPie, {
+            type: 'pie', // グラフの種類を円グラフに指定
+            data: {
+                labels: ['Red', 'Blue', 'Yellow'], // セグメントのラベル
+                datasets: [{
+                    data: [300, 50, 100], // 各セグメントの値
+                    backgroundColor: ['red', 'blue', 'yellow'] // 各セグメントの色
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
